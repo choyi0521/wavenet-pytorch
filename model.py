@@ -76,7 +76,6 @@ class Wavenet(nn.Module):
             fc = self.cond_filter_convs[i](padded_cond)
             gc = self.cond_gate_convs[i](padded_cond)
             z = torch.tanh(fx+fc)*torch.sigmoid(gx+gc)
-            z = z[:, :, -x.shape[2]:]
 
             skip += self.skip_convs[i](z)
             x += self.residual_convs[i](z)
