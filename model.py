@@ -68,6 +68,7 @@ class Wavenet(nn.Module):
         skip = torch.zeros((x.shape[0], self.hidden_channels, x.shape[2]),
                            dtype=torch.float,
                            device=self.device)
+
         for i, dilation in enumerate(self.dilations):
             padded_x = self.pad[i](x)
             padded_cond = self.pad[i](cond)
